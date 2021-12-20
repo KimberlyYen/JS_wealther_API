@@ -1,0 +1,69 @@
+body {
+  background-color: powderblue;
+}
+h1 {
+  text-align: center;
+  color: rgba(138, 98, 63, 1);
+  font-family: "Baloo Bhaijaan 2", cursive;
+}
+h2 {
+  font-size: 16px;
+  background-color: #d1ba98;
+  width: 80px;
+  height: 22px;
+  text-align: center;
+  color: white;
+  font-weight: 300;
+}
+h2.title {
+  width: 100%;
+}
+li {
+  list-style: none;
+}
+.notice {
+  color: gray;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+.cradGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  width: 900px;
+  max-width: 60%;
+  background-color: white;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.highlight {
+  background-color: gold;
+}
+.lowTemp {
+  color: crimson;
+}
+.rankList {
+  color: saddlebrown;
+}
+button {
+  margin-top: 20px;
+  border: none;
+  background-color: saddlebrown;
+  color: white;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+.answer {
+  padding: 20px;
+  background-color: rgb(228, 228, 228);
+}
+.title_answer {
+  margin: 10px 0px;
+  background-color: white;
+}

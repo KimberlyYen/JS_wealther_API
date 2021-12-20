@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kimberly</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>JavaScript</h1>
+    <div class="cradGroup">
+      <div class="card">
+        <a href="https://opendata.cwb.gov.tw/index" target="_blank">
+          <h2 class="title">中央氣象局-開放資料平臺-API授權碼</h2></a>
+          CWB-1E70461D-B346-4378-A55A-DB337F9BD7C5
+          <a href="https://opendata.cwb.gov.tw/dist/opendata-swagger.html?urls.primaryName=openAPI" target="_blank" rel="noopener noreferrer">
+          <h2 class="title">中央氣象局開放資料平臺之資料擷取API</h2>
+          swagger
+          </a>
+      </div>
+      <div class="card examOne">
+        <h2>題目一</h2>
+        <p>
+          找到全台當下最低溫的點， 並列出
+          <span class="highlight">縣市、行政區、測站名稱、溫度、座標</span>
+        </p>
+        <p class="notice">
+          透過中央氣象局ＡＰＩ取得全台測站即時資料
+        </p>
+        <p class="notice">
+          API : v1/rest/datastore/O-A0001-001
+        </p>
+        <button type="button">
+          全台當下最低溫的點 ⬇️
+        </button>
+        <div class="answer" id="examOne_answer">
+        </div>
+      </div>
+      <div class="card examTwo">
+        <h2>題目二</h2>
+        <p>
+          同上，針對不同海拔高度找出<span class="highlight">最低溫測站，每500m一組</span>，並回傳object 
+          <p class="notice">
+              API : v1/rest/datastore/O-A0001-001
+          </p>
+          <div class="answer" id="examTwo_answer">
+            <div>
+              <!-- <li class="title_answer">0 - 500公尺</li>
+              <li class="title_answer">500 - 1000公尺</li>
+              <li class="title_answer">1000 - 1500公尺</li>
+              <li class="title_answer">1500 - 1000公尺</li> -->
+            </div>
+          </div>
+        </p>
+      </div>
+      <div class="card examThree">
+        <h2>題目三</h2>
+        <p>
+          近<span class="highlight">24小時</span>降雨量<span class="highlight">前20名</span>是哪些？
+  分別統計整理列在哪些<span class="highlight">縣市</span>？
+          <p class="notice">
+            HOUR_24欄位為近24小時的累積降雨量
+          </p>
+          <p class="notice">
+              API : /v1/rest/datastore/O-A0002-001
+          </p>
+          <button type="button">
+            前20名，近24小時的累積降雨量 ⬇️
+          </button>
+          <div class="answer" id="examThree_answer">
+            <li class="title_answer">No &emsp; 縣市/24小時 &emsp; 雨量</li>
+          </div>
+        </p>
+      </div>
+      <div class="card examFour">
+        <h2>題目四</h2>
+        <p>
+          自己所在的縣市-鄉鎮，<span class="highlight">未來一週的</span>
+          <span class="highlight">最低溫</span>
+          與<span class="highlight">最高溫</span>分別為多少？</p>
+          <p>
+          且<span class="highlight">單日溫差最大</span>為多少？
+          </p>
+          <p class="notice">
+              API : /v1/rest/datastore/F-D0047-063
+          </p>
+          <div class="answer" id="examFour_answer">
+          </div>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
