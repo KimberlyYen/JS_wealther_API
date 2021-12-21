@@ -1,5 +1,5 @@
 body {
-  background-color: powderblue;
+  background-color: linen;
 }
 h1 {
   text-align: center;
@@ -45,7 +45,8 @@ li {
 .highlight {
   background-color: gold;
 }
-.lowTemp {
+.lowTemp,
+span + span {
   color: crimson;
 }
 .rankList {
@@ -63,7 +64,10 @@ button {
   padding: 20px;
   background-color: rgb(228, 228, 228);
 }
-.title_answer {
-  margin: 10px 0px;
+.title_answer,
+#examOne_answer li span,
+#examFour_answer li span,
+#examTwo_answer li span {
   background-color: white;
+  line-height: 2;
 }

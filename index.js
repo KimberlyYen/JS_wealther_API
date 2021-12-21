@@ -7,7 +7,7 @@ fetch(
   .then(function (data) {
     pullAlldata(data);
     findTempMin(data);
-    // findMountain(data);
+    findMountain(data);
     findRainTop(data);
   })
   .catch(function (err) {
@@ -27,69 +27,126 @@ fetch(
     console.log(err);
   });
 
+// All data
 function pullAlldata(data) {
   const location = data.records.location;
   return location;
 }
 
+// Exam One
 function findTempMin(data) {
   const location = pullAlldata(data);
-  const time = location[i].time.obsTime;
   const newTempArray = [];
 
   for (i = 0; i < location.length; i++) {
+    const time = location[i].time.obsTime;
     let city = location[i].parameter[0].parameterValue;
-    let cityDetail = location[i].parameter[2].parameterValue;
+    let town = location[i].parameter[2].parameterValue;
     let locationName = location[i].locationName;
     let temp = location[i].weatherElement[3].elementValue;
     let lon = location[i].lon;
     let lat = location[i].lat;
 
-    // push
-    newTempArray.push({ city, cityDetail, locationName, temp, lon, lat });
+    // Push
+    newTempArray.push({ time, city, town, locationName, temp, lon, lat });
 
-    // sort
+    // Sort
     newTempArray.sort(function (a, b) {
       return a.temp - b.temp;
     });
   }
-  console.log(location);
-  // console.log(newTempArray);
+  // Filter
+  let filterNewTempArray = newTempArray.filter((e) => e.temp !== "-99");
+  document.getElementById("examOne_answer").innerHTML = `
+  <li><span>自動氣象站資料-無人自動站氣象資料</span></li>
+  <li><span>觀測資料時間</span> ${filterNewTempArray[0].time}</li>
+  <li><span>縣市</span> ${filterNewTempArray[0].city}</li>
+  <li><span>鄉鎮</span> ${filterNewTempArray[0].town}</li>
+  <li><span>測站名稱</span> ${filterNewTempArray[0].locationName}</li>
+  <li><span>溫度</span><span> ${filterNewTempArray[0].temp}</span></li>
+  <li><span>緯度</span> ${filterNewTempArray[0].lat}</li>
+  <li><span>經度</span> ${filterNewTempArray[0].lon}</li>
+  `;
 }
 
-// function findMountain(data) {
-//   const lowestWeather = data.records.location;
-//   let newArray = allData(data);
+// Exam Two
+function findMountain(data) {
+  const location = pullAlldata(data);
+  const five = []; // 0 - 500
+  const one = []; // 500 - 1000
+  const oneFive = []; //3. 1000 - 1500
+  const two = []; // 1500 - 2000
+  const twoFive = []; // 2000 - 2500
+  const three = []; // 2500 - 3000
+  const threeFive = []; // 3000 - 3500
+  const four = []; //8. 3500 - 4000
 
-//   // 0-500 ElEV
-//   newArray.sort(function (a, b) {
-//     return a - b;
-//   });
+  for (i = 0; i < location.length; i++) {
+    let elve = location[i].weatherElement[0].elementValue;
+    let temp = location[i].weatherElement[3].elementValue;
+    let city = location[i].parameter[0].parameterValue;
+    let town = location[i].parameter[2].parameterValue;
+    const newElve = Math.floor(elve / 500) * 500;
+    let obj = Object.assign({ newElve, temp, city, town });
 
-//   const max = Math.max(...newArray);
-//   const elevationSection = [
-//     "0-500",
-//     "500-1000",
-//     "1000-1500",
-//     "1500-2000",
-//     "2000-2500",
-//     "2500-3000",
-//     "3000-3500",
-//     "3500-3860",
-//   ];
+    if (obj.newElve < 500 && obj.temp !== "-99") {
+      five.push(obj);
+    } else if (obj.newElve < 1000 && obj.temp !== "-99") {
+      one.push(obj);
+    } else if (obj.newElve < 1500 && obj.temp !== "-99") {
+      oneFive.push(obj);
+    } else if (obj.newElve < 2000 && obj.temp !== "-99") {
+      two.push(obj);
+    } else if (obj.newElve < 2500 && obj.temp !== "-99") {
+      twoFive.push(obj);
+    } else if (obj.newElve < 3000 && obj.temp !== "-99") {
+      three.push(obj);
+    } else if (obj.newElve < 3500 && obj.temp !== "-99") {
+      threeFive.push(obj);
+    } else if (obj.newElve < 4000 && obj.temp !== "-99") {
+      four.push(obj);
+    }
+  }
 
-//   // Show
-//   document.getElementById("examTwo_answer").innerHTML = `
-//   <li>
-//     <span class="title_answer">
-//       ${elevationSection[0]} 公尺
-//     </span>
-//   </li>
-//   <li>最低溫測站 ${lowestWeather[0].locationName} </li>
-//   <li>氣溫 <span class="lowTemp">${newArray[0]}</span> </li>
-//   `;
-// }
+  // Sort
+  five.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  one.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  oneFive.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  two.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  twoFive.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  three.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  threeFive.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
+  four.sort(function (a, b) {
+    return a.temp - b.temp;
+  });
 
+  document.getElementById("examTwo_answer").innerHTML = `
+  <li><span> 500 公尺以下 </span><li> ${five[0].city} ${five[0].town} 溫度<span> ${five[0].temp}度 </span></li></li>
+  <li><span> 500 - 1000公尺 </span><li>  ${one[0].city} ${one[0].town} 溫度<span> ${one[0].temp}度 </span></li></li>
+  <li><span> 1000 - 1500公尺 </span><li>  ${oneFive[0].city} ${oneFive[0].town} 溫度<span> ${oneFive[0].temp}度 </span></li></li>
+  <li><span> 1500 - 2000公尺 </span><li>  ${two[0].city} ${two[0].town} 溫度<span> ${two[0].temp}度 </span></li></li>
+  <li><span> 2000 - 2500公尺 </span><li>  ${twoFive[0].city} ${twoFive[0].town} 溫度<span> ${twoFive[0].temp}度 </span></li></li>
+  <li><span> 2500 - 3000公尺 </span><li>  ${three[0].city} ${three[0].town} 溫度<span> ${three[0].temp}度 </span></li></li>
+  <li><span> 3000 - 3500公尺 </span><li>  ${threeFive[0].city} ${threeFive[0].town} 溫度<span> ${threeFive[0].temp}度 </span></li></li>
+  <li><span> 3500 公尺以上 </span><li>  ${four[0].city} ${four[0].town} 溫度<span> ${four[0].temp}度 </span></li></li>
+  `;
+}
+
+// Exam Three
 function findRainTop(data) {
   let pullAlldataArray = pullAlldata(data);
   let array = [];
@@ -124,6 +181,7 @@ function findRainTop(data) {
   }
 }
 
+// Exam Four
 function expectFutureMaxT(data) {
   const weatherElement = data.records.locations[0].location[0].weatherElement;
   const maxDescription = weatherElement[12].description;
@@ -166,11 +224,10 @@ function expectFutureMaxT(data) {
   let findTempGap = findTGap();
 
   document.getElementById("examFour_answer").innerHTML = `
-  <li class="title_answer"> 台北市/內湖區 </li>
-  <li class="title_answer"> 未來一週氣溫 </li>
-  <li>${minDescription} <span class="lowTemp"> ${findTheMinTtemp} </span></li>
-  <li>${maxDescription} <span class="lowTemp"> ${findTheMaxTtemp} </span></li>
-  <li class="title_answer"> 單日溫差最大 </li>
-  <li>攝氏度<span class="lowTemp"> ${findTempGap} </span>度</li>
+  <li><span> 台北市/內湖區 </span></li>
+  <li><span> 未來一週氣溫  </span></li>
+  <li><span>${minDescription} </span><span> ${findTheMinTtemp} </span></li>
+  <li><span>${maxDescription} </span><span> ${findTheMaxTtemp} </span></li>
+  <li><span> 單日溫差最大 </span><span> 攝氏度 ${findTempGap}     </span></li>
   `;
 }
