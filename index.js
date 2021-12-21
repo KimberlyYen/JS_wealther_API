@@ -73,13 +73,13 @@ function findTempMin(data) {
 function findMountain(data) {
   const location = pullAlldata(data);
   const five = []; // 0 - 500
-  const one = []; // 500 - 1000
-  const oneFive = []; //3. 1000 - 1500
-  const two = []; // 1500 - 2000
-  const twoFive = []; // 2000 - 2500
-  const three = []; // 2500 - 3000
-  const threeFive = []; // 3000 - 3500
-  const four = []; //8. 3500 - 4000
+  const one = []; // - 1000
+  const oneFive = []; // - 1500
+  const two = []; // - 2000
+  const twoFive = []; // - 2500
+  const three = []; // - 3000
+  const threeFive = []; // - 3500
+  const four = []; //8. - 4000
 
   for (i = 0; i < location.length; i++) {
     let elve = location[i].weatherElement[0].elementValue;
