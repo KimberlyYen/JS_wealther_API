@@ -107,32 +107,14 @@ function findMountain(data) {
       four.push(obj);
     }
   }
-
-  // Sort
-  five.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  one.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  oneFive.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  two.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  twoFive.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  three.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  threeFive.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
-  four.sort(function (a, b) {
-    return a.temp - b.temp;
-  });
+  
+  // sort
+  const newArray = [five, one, oneFive, two, twoFive, three, threeFive, four]
+  for (i = 0 ; i < newArray.length ; i++) {
+    newArray[i].sort(function (a, b) {
+      return a.temp - b.temp;
+    })
+  }
 
   document.getElementById("examTwo_answer").innerHTML = `
   <li>500 公尺以下<span>     ${five[0].city} ${five[0].town} 溫度 ${five[0].temp}度 </span></li>
