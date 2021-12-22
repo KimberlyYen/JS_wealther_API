@@ -135,14 +135,14 @@ function findMountain(data) {
   });
 
   document.getElementById("examTwo_answer").innerHTML = `
-  <li><span> 500 公尺以下 </span><li> ${five[0].city} ${five[0].town} 溫度<span> ${five[0].temp}度 </span></li></li>
-  <li><span> 500 - 1000公尺 </span><li>  ${one[0].city} ${one[0].town} 溫度<span> ${one[0].temp}度 </span></li></li>
-  <li><span> 1000 - 1500公尺 </span><li>  ${oneFive[0].city} ${oneFive[0].town} 溫度<span> ${oneFive[0].temp}度 </span></li></li>
-  <li><span> 1500 - 2000公尺 </span><li>  ${two[0].city} ${two[0].town} 溫度<span> ${two[0].temp}度 </span></li></li>
-  <li><span> 2000 - 2500公尺 </span><li>  ${twoFive[0].city} ${twoFive[0].town} 溫度<span> ${twoFive[0].temp}度 </span></li></li>
-  <li><span> 2500 - 3000公尺 </span><li>  ${three[0].city} ${three[0].town} 溫度<span> ${three[0].temp}度 </span></li></li>
-  <li><span> 3000 - 3500公尺 </span><li>  ${threeFive[0].city} ${threeFive[0].town} 溫度<span> ${threeFive[0].temp}度 </span></li></li>
-  <li><span> 3500 公尺以上 </span><li>  ${four[0].city} ${four[0].town} 溫度<span> ${four[0].temp}度 </span></li></li>
+  <li>500 公尺以下<span>     ${five[0].city} ${five[0].town} 溫度 ${five[0].temp}度 </span></li>
+  <li>500 - 1000公尺<span>  ${one[0].city} ${one[0].town} 溫度${one[0].temp}度 </span></li>
+  <li>1000 - 1500公尺<span> ${oneFive[0].city} ${oneFive[0].town} 溫度${oneFive[0].temp}度 </span></li>
+  <li>1500 - 2000公尺<span> ${two[0].city} ${two[0].town} 溫度${two[0].temp}度 </span></li>
+  <li>2000 - 2500公尺<span> ${twoFive[0].city} ${twoFive[0].town} 溫度${twoFive[0].temp}度 </span></li>
+  <li>2500 - 3000公尺<span> ${three[0].city} ${three[0].town} 溫度${three[0].temp}度 </span></li>
+  <li>3000 - 3500公尺<span> ${threeFive[0].city} ${threeFive[0].town} 溫度${threeFive[0].temp}度 </span></li>
+  <li>3500 公尺以上<span>${four[0].city} ${four[0].town} 溫度 ${four[0].temp}度 </span></li>
   `;
 }
 
